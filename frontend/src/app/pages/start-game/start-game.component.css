@@ -1,0 +1,35 @@
+mat-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: rgb(255, 255, 255);
+  border: solid 1px #3f51b5;
+}
+
+mat-card-header,
+:host /deep/ .mat-card-header-text {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+mat-card-content,
+mat-card-footer,
+form {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-field,
+button {
+  flex: 0.7;
+}
+
+.reset-icon {
+  cursor: pointer;
+}

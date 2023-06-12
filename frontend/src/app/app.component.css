@@ -1,0 +1,22 @@
+header,
+footer {
+  flex: 0.05;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+header {
+  background-color: #3f51b5;
+}
+
+header > p {
+  color: white;
+  font-weight: bold;
+}
+
+footer > p {
+  color: white;
+}

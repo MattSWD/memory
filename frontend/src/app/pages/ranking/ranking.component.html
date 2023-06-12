@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Grazie per aver giocato!</mat-card-title>
+    <mat-card-subtitle *ngIf="showTable"
+      >Il tuo tempo è di: {{ currentMatch.time | date : "mm:ss.SS" }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngIf="showTable; else loading">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Rank Column -->
+        <ng-container matColumnDef="rank">
+          <th mat-header-cell *matHeaderCellDef>Rank</th>
+          <td [ngClass]="getRowClass(element)" mat-cell *matCellDef="let element">{{ element.rank }}</td>
+        </ng-container>
+
+        <!-- Nickname Column -->
+        <ng-container matColumnDef="nickname">
+          <th mat-header-cell *matHeaderCellDef>Nickname</th>
+          <td [ngClass]="getRowClass(element)" mat-cell *matCellDef="let element">{{ element.nickname }}</td>
+        </ng-container>
+
+        <!-- Time Column -->
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef>Time</th>
+          <td [ngClass]="getRowClass(element)" mat-cell *matCellDef="let element">
+            {{ element.time | date : "mm:ss.SS" }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </ng-container>
+
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-footer>
+    <button type="button" mat-raised-button color="primary" [disabled]="!showTable" (click)="navigateToGlobalRanking()">
+      Classifica Globale
+    </button></mat-card-footer
+  >
+</mat-card>
